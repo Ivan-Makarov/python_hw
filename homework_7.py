@@ -2,9 +2,9 @@ class Animal:
     weight = 0 #kg
     max_weight = 0 #kg
 
-class Farm_Animal:
+class FarmAnimal(Animal):
     is_tame = True
-    feed_efficiency = 1 #kgs of food transormed into 1 kg of weight
+    feed_efficiency = 1 #kgs of food tranfsormed into 1 kg of weight
     max_food_per_day = 1 #kg
 
     def __init__(self, weight_at_birth = Animal.weight):
@@ -18,14 +18,14 @@ class Farm_Animal:
             if self.weight > self.max_weight:
                 self.weight = self.max_weight
 
-class Bird:
+class Bird(Animal):
     legs = 2
     has_wings = True
 
-class Mammal:
+class Mammal(Animal):
     legs = 4
 
-class Cow(Animal, Farm_Animal, Mammal):
+class Cow(FarmAnimal, Mammal):
     feed_efficiency = 6
     weight = 30
     max_weight = 400
@@ -37,7 +37,7 @@ class Cow(Animal, Farm_Animal, Mammal):
     ]
     says = 'Moo'
 
-class Goat(Animal, Farm_Animal, Mammal):
+class Goat(FarmAnimal, Mammal):
     weight = 3.5
     max_weight = 50
     max_food_per_day = 30
@@ -50,7 +50,7 @@ class Goat(Animal, Farm_Animal, Mammal):
     ]
     says = 'Maaah'
 
-class Sheep(Animal, Farm_Animal, Mammal):
+class Sheep(FarmAnimal, Mammal):
     weight: 4
     feed_efficiency = 4
     max_weight = 60
@@ -62,7 +62,7 @@ class Sheep(Animal, Farm_Animal, Mammal):
     ]
     says = 'Baaah'
 
-class Pig(Animal, Farm_Animal, Mammal):
+class Pig(FarmAnimal, Mammal):
     weight: 2.5
     max_weight = 200
     max_food_per_day = 80
@@ -71,7 +71,7 @@ class Pig(Animal, Farm_Animal, Mammal):
     ]
     says = 'Oink-oink'
 
-class Duck(Animal, Farm_Animal, Bird):
+class Duck(FarmAnimal, Bird):
     weight: 0.05
     feed_efficiency = 2.5
     max_weight = 4
@@ -82,7 +82,7 @@ class Duck(Animal, Farm_Animal, Bird):
     ]
     says = 'Quack-quack'
 
-class Chicken(Animal, Farm_Animal, Bird):
+class Chicken(FarmAnimal, Bird):
     weight: 0.04
     feed_efficiency = 2
     max_weight = 3
@@ -93,7 +93,7 @@ class Chicken(Animal, Farm_Animal, Bird):
     ]
     says = 'Cluck-cluck'
 
-class Goose(Animal, Farm_Animal, Bird):
+class Goose(FarmAnimal, Bird):
     weight: 0.1
     feed_efficiency = 3.5
     max_weight = 7

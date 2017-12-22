@@ -1,13 +1,14 @@
 class Animal:
-    weight = 0 #kg
-    max_weight = 0 #kg
+    weight = 0.0  # kg
+    max_weight = 0.0  # kg
+
 
 class FarmAnimal(Animal):
     is_tame = True
-    feed_efficiency = 1 #kgs of food tranfsormed into 1 kg of weight
-    max_food_per_day = 1 #kg
+    feed_efficiency = 1  # kgs of food tranfsormed into 1 kg of weight
+    max_food_per_day = 1  # kg
 
-    def __init__(self, weight_at_birth = Animal.weight):
+    def __init__(self, weight_at_birth=Animal.weight):
         self.weight = weight_at_birth
 
     def feed(self, food_amount):
@@ -18,14 +19,17 @@ class FarmAnimal(Animal):
             if self.weight > self.max_weight:
                 self.weight = self.max_weight
 
+
 class Bird(Animal):
     legs = 2
     has_wings = True
 
+
 class Mammal(Animal):
     legs = 4
 
-class Cow(FarmAnimal, Mammal):
+
+class Cow(Mammal, FarmAnimal):
     feed_efficiency = 6
     weight = 30
     max_weight = 400
@@ -37,7 +41,8 @@ class Cow(FarmAnimal, Mammal):
     ]
     says = 'Moo'
 
-class Goat(FarmAnimal, Mammal):
+
+class Goat(Mammal, FarmAnimal):
     weight = 3.5
     max_weight = 50
     max_food_per_day = 30
@@ -50,7 +55,8 @@ class Goat(FarmAnimal, Mammal):
     ]
     says = 'Maaah'
 
-class Sheep(FarmAnimal, Mammal):
+
+class Sheep(Mammal, FarmAnimal):
     weight: 4
     feed_efficiency = 4
     max_weight = 60
@@ -62,7 +68,8 @@ class Sheep(FarmAnimal, Mammal):
     ]
     says = 'Baaah'
 
-class Pig(FarmAnimal, Mammal):
+
+class Pig(Mammal, FarmAnimal):
     weight: 2.5
     max_weight = 200
     max_food_per_day = 80
@@ -71,7 +78,8 @@ class Pig(FarmAnimal, Mammal):
     ]
     says = 'Oink-oink'
 
-class Duck(FarmAnimal, Bird):
+
+class Duck(Bird, FarmAnimal):
     weight: 0.05
     feed_efficiency = 2.5
     max_weight = 4
@@ -82,7 +90,8 @@ class Duck(FarmAnimal, Bird):
     ]
     says = 'Quack-quack'
 
-class Chicken(FarmAnimal, Bird):
+
+class Chicken(Bird, FarmAnimal):
     weight: 0.04
     feed_efficiency = 2
     max_weight = 3
@@ -93,7 +102,8 @@ class Chicken(FarmAnimal, Bird):
     ]
     says = 'Cluck-cluck'
 
-class Goose(FarmAnimal, Bird):
+
+class Goose(Bird, FarmAnimal):
     weight: 0.1
     feed_efficiency = 3.5
     max_weight = 7
@@ -104,16 +114,20 @@ class Goose(FarmAnimal, Bird):
     ]
     says = 'Honk'
 
+
 cow_1 = Cow(35)
 duck_1 = Duck(0.07)
 
+
 def show_weight_growth(animal, days, food_per_day):
+
     for day in range(1, days + 1):
         if animal.weight == animal.max_weight:
             print("День {}, достигнут максимальный вес {} кг".format(day, animal.max_weight))
             break
         print("День {}, вес: {}".format(day, animal.weight))
         animal.feed(food_per_day)
+
 
 show_weight_growth(cow_1, 100, 30)
 show_weight_growth(duck_1, 100, 3)
